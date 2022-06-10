@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.kevinhes.art","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.11.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3R6W50QX78"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3R6W50QX78');
+</script>
+
+    <meta name="description" content="那個先來後到的問題  在上一篇的 Sass 常見錯誤中有提到 Sass 的編譯方式是由上到下進行編譯，所以如果在變數宣告之前就調用變數的話就會造成編譯錯誤，那如果在已經宣告的變數之後重複宣告會發生什麼事情呢？我們可以用程式碼來編譯看看   123456$primary: red;$primary: purple;h1 &amp;#123;  color: $primary;&amp;#125;    編譯結果就會">
+<meta property="og:type" content="article">
+<meta property="og:title" content="關於 Sass 變數的作用域（!global，!default）">
+<meta property="og:url" content="http://blog.kevinhes.art/2022/06/10/%E9%97%9C%E6%96%BC-Sass-%E8%AE%8A%E6%95%B8%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/index.html">
+<meta property="og:site_name" content="大姐的學習部落格">
+<meta property="og:description" content="那個先來後到的問題  在上一篇的 Sass 常見錯誤中有提到 Sass 的編譯方式是由上到下進行編譯，所以如果在變數宣告之前就調用變數的話就會造成編譯錯誤，那如果在已經宣告的變數之後重複宣告會發生什麼事情呢？我們可以用程式碼來編譯看看   123456$primary: red;$primary: purple;h1 &amp;#123;  color: $primary;&amp;#125;    編譯結果就會">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-06-10T04:17:42.000Z">
+<meta property="article:modified_time" content="2022-06-10T12:03:01.621Z">
+<meta property="article:author" content="kevinhes">
+<meta property="article:tag" content="Sass">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://blog.kevinhes.art/2022/06/10/%E9%97%9C%E6%96%BC-Sass-%E8%AE%8A%E6%95%B8%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://blog.kevinhes.art/2022/06/10/%E9%97%9C%E6%96%BC-Sass-%E8%AE%8A%E6%95%B8%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/","path":"2022/06/10/關於-Sass-變數的作用域/","title":"關於 Sass 變數的作用域（!global，!default）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>關於 Sass 變數的作用域（!global，!default） | 大姐的學習部落格</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3R6W50QX78"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-3R6W50QX78","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="大姐的學習部落格" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">大姐的學習部落格</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">建築轉職前端的學習日常</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%82%A3%E5%80%8B%E5%85%88%E4%BE%86%E5%BE%8C%E5%88%B0%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="nav-number">1.</span> <span class="nav-text">那個先來後到的問題</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9B%BF%E8%AE%8A%E6%95%B8%E5%8A%A0%E5%85%A5%E6%AC%8A%E9%87%8D%E7%9A%84%E6%A6%82%E5%BF%B5-default"><span class="nav-number">2.</span> <span class="nav-text">替變數加入權重的概念 !default</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%8A%E6%95%B8%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">3.</span> <span class="nav-text">變數作用域</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">kevinhes</p>
+  <div class="site-description" itemprop="description">前端學習筆記</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">標籤</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://blog.kevinhes.art/2022/06/10/%E9%97%9C%E6%96%BC-Sass-%E8%AE%8A%E6%95%B8%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="kevinhes">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大姐的學習部落格">
+      <meta itemprop="description" content="前端學習筆記">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="關於 Sass 變數的作用域（!global，!default） | 大姐的學習部落格">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          關於 Sass 變數的作用域（!global，!default）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2022-06-10 12:17:42 / 修改時間：20:03:01" itemprop="dateCreated datePublished" datetime="2022-06-10T12:17:42+08:00">2022-06-10</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="那個先來後到的問題"><a href="#那個先來後到的問題" class="headerlink" title="那個先來後到的問題"></a>那個先來後到的問題</h1><p>  在上一篇的 Sass 常見錯誤中有提到 Sass 的編譯方式是由上到下進行編譯，所以如果在變數宣告之前就調用變數的話就會造成編譯錯誤，那如果在已經宣告的變數之後重複宣告會發生什麼事情呢？我們可以用程式碼來編譯看看</p>
+  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$primary</span>: red;</span><br><span class="line"><span class="variable">$primary</span>: purple;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">$primary</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  編譯結果就會變成這樣</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line"><span class="attribute">color</span>: purple;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  我們可以看到 <code>$primary</code> 變數變成了紫色，意思就是說如果重複宣告變數的話後面的變數的值是會修改前面的變數內容的。</p>
+  <span id="more"></span>
+<h1 id="替變數加入權重的概念-default"><a href="#替變數加入權重的概念-default" class="headerlink" title="替變數加入權重的概念 !default"></a>替變數加入權重的概念 !default</h1><p>  上一節提到了 Sass 變數覆蓋的問題，現在我們來學怎麼為變數加上預設值，當我們在變數後面加上了 <code>!default</code> 的時候此變數的賦值就會變成預設值，在權重上來說它就變成了最低的權重，覆蓋他變得十分容易，也無需在意前後問題，我們看看上一節的範例程式碼如果我們在第二宣告的變數上加上 <code>!default</code> 會怎麼樣？ </p>
+  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$primary</span>: red;</span><br><span class="line"><span class="variable">$primary</span>: purple !default;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">$primary</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  編譯結果就會變成這樣</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  我們可以發現顏色依舊是紅色，這是因為第二次宣告的 <code>$primary</code> 是預設值當編譯到此行時，因為 red 的權重比較重，所以第二次宣告就不理他了。</p>
+<h1 id="變數作用域"><a href="#變數作用域" class="headerlink" title="變數作用域"></a>變數作用域</h1><p>  目前我們所有的範例變數的位置都是放在全域下，所以說不管我們在拿裡讀取都可以讀取得到，但如果我們想要的特定選擇器裏面有自己的變數，而不被其他選擇器讀取或是被覆蓋的話，我們就可以把變數放在區域裡面也就是選擇器後面的 {} 內，我們來看看範例程式碼</p>
+  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$primary</span>: red;</span><br><span class="line"><span class="variable">$primary</span>: blue;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="variable">$primary</span>: purple;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">$primary</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h2</span> &#123;</span><br><span class="line"><span class="attribute">color</span>: <span class="variable">$primary</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  編譯下來的話是這個樣子</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line"><span class="attribute">color</span>: purple;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h2</span> &#123;</span><br><span class="line"><span class="attribute">color</span>: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  我們可以看到 h2 變成了藍色，而不是 h1 標籤選擇器裡面的紫色，我們可以這樣來利用區域內的變數而不被外部污染，但如果你有需求（我寫的 code 太少無法舉例），也可以在 {} 內部的變數後面加上 <code>!global</code> 這條程式碼，這樣 Sass 在編輯的時候，就會把加了 <code>!global</code> 的程式碼當作是全域變數，我們來看看如果我們在上面的程式碼加上  <code>!global</code> 或有什麼效果</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line"><span class="attribute">color</span>: purple;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h2</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: purple;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  最後 h2 也變成了紫色，這就是  <code>!global</code> 的用法。</p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p>  <a target="_blank" rel="noopener" href="https://courses.hexschool.com/courses/enrolled/670032">六角學院-Sass 實戰全攻略 - 成為前 1% 的 CSS 頂尖好手</a><br>  <a target="_blank" rel="noopener" href="https://awdr74100.github.io/2020-05-25-scss-variables/">Sass &#x2F; SCSS 預處理器 - Variables 變數宣告與 !global、!default 標誌定義</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Sass/" rel="tag"># Sass</a>
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/06/09/Sass-%E8%AE%8A%E6%95%B8%E4%BD%BF%E7%94%A8/" rel="prev" title="Sass 的變數">
+                  <i class="fa fa-chevron-left"></i> Sass 的變數
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">若有需要轉載文章，麻煩請保留原作者名稱和原始連結</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
