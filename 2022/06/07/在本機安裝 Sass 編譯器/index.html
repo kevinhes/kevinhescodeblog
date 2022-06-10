@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.kevinhes.art","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.11.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.kevinhes.art","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.11.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3R6W50QX78"></script>
@@ -30,19 +30,19 @@
   gtag('config', 'G-3R6W50QX78');
 </script>
 
-    <meta name="description" content="如何在本機使用 Sass?  我個人使用的方式就是使用 VS code 的插件，live Sass compiler 的方式來進行編譯，我們可以在 VS code 的 Marketplace 裡面找到下面的插件  Live Sass Compiler       Live Sass Compiler 使用上也非常容易，安裝好之後我們可以在專案資料夾中新建一個 Sass 檔案，不論是 Sass 或是">
+    <meta name="description" content="如何在本機使用 Sass?  我個人使用的方式就是使用 VS code 的插件，live Sass compiler 的方式來進行編譯，我們可以在 VS code 的 Marketplace 裡面找到下面的插件  Live Sass Compiler">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在本機安裝 Sass 編譯器">
 <meta property="og:url" content="http://blog.kevinhes.art/2022/06/07/%E5%9C%A8%E6%9C%AC%E6%A9%9F%E5%AE%89%E8%A3%9D%20Sass%20%E7%B7%A8%E8%AD%AF%E5%99%A8/index.html">
 <meta property="og:site_name" content="大姐的學習部落格">
-<meta property="og:description" content="如何在本機使用 Sass?  我個人使用的方式就是使用 VS code 的插件，live Sass compiler 的方式來進行編譯，我們可以在 VS code 的 Marketplace 裡面找到下面的插件  Live Sass Compiler       Live Sass Compiler 使用上也非常容易，安裝好之後我們可以在專案資料夾中新建一個 Sass 檔案，不論是 Sass 或是">
+<meta property="og:description" content="如何在本機使用 Sass?  我個人使用的方式就是使用 VS code 的插件，live Sass compiler 的方式來進行編譯，我們可以在 VS code 的 Marketplace 裡面找到下面的插件  Live Sass Compiler">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%888.11.37.png?alt=media&token=925ebfda-490c-4682-a170-5ace3ea5cba0">
 <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/sass%2F%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%888.43.14.png?alt=media&token=00fe9afe-304f-4fa3-92d3-205493f7e1d3">
 <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/sass%2F%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%889.06.57.png?alt=media&token=30cdc6ef-c81a-438f-8e8f-36a489072d98">
 <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/sass%2F%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%889.07.10.png?alt=media&token=85fb4277-243f-4fb9-857d-aa8c667622d9">
 <meta property="article:published_time" content="2022-06-07T09:08:14.000Z">
-<meta property="article:modified_time" content="2022-06-07T13:14:27.040Z">
+<meta property="article:modified_time" content="2022-06-09T06:41:43.865Z">
 <meta property="article:author" content="kevinhes">
 <meta property="article:tag" content="Sass">
 <meta property="article:tag" content="CSS">
@@ -99,6 +99,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -107,11 +108,37 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
         
@@ -150,7 +177,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -222,9 +249,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2022-06-07 17:08:14 / 修改時間：21:14:27" itemprop="dateCreated datePublished" datetime="2022-06-07T17:08:14+08:00">2022-06-07</time>
+      <time title="創建時間：2022-06-07 17:08:14" itemprop="dateCreated datePublished" datetime="2022-06-07T17:08:14+08:00">2022-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2022-06-09 14:41:43" itemprop="dateModified" datetime="2022-06-09T14:41:43+08:00">2022-06-09</time>
     </span>
 
   
@@ -253,6 +286,8 @@
     <div class="post-body" itemprop="articleBody">
         <h1 id="如何在本機使用-Sass"><a href="#如何在本機使用-Sass" class="headerlink" title="如何在本機使用 Sass?"></a>如何在本機使用 Sass?</h1><p>  我個人使用的方式就是使用 VS code 的插件，live Sass compiler 的方式來進行編譯，我們可以在 VS code 的 Marketplace 裡面找到下面的插件<br>  <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass">Live Sass Compiler</a></p>
   <img src="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%888.11.37.png?alt=media&token=925ebfda-490c-4682-a170-5ace3ea5cba0" style="width:100%">
+
+  <span id="more"></span>
 
 <p>  Live Sass Compiler 使用上也非常容易，安裝好之後我們可以在專案資料夾中新建一個 Sass 檔案，不論是 Sass 或是 SCSS 都可以，當專案資料夾裡面有 Sass 檔時系統就會自動偵測到接下來我們就會看到 VS code 的下方功能欄出現 Watch Sass 的字樣，按下去它就自動編譯了</p>
 <p>  <img src="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/sass%2F%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%888.43.14.png?alt=media&token=00fe9afe-304f-4fa3-92d3-205493f7e1d3" alt="img"></p>
@@ -292,6 +327,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2022/06/09/Sass-%E8%AE%8A%E6%95%B8%E4%BD%BF%E7%94%A8/" rel="next" title="Sass 的變數">
+                  Sass 的變數 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -319,14 +357,11 @@
   &copy; 
   <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class=""></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">kevinhes</span>
+  <span class="author" itemprop="copyrightHolder">若有需要轉載文章，麻煩請保留原作者名稱和原始連結</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
-  </div>
-  <div class="addthis_inline_share_toolbox">
-    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-62a182e41174e55b" async="async"></script>
   </div>
 
     </div>
@@ -337,6 +372,8 @@
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 

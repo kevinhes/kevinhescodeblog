@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.kevinhes.art","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.11.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3R6W50QX78"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3R6W50QX78');
+</script>
+
+    <meta name="description" content="變數是什麼？  比如說我們今天要賣麵包，然後一個麵包麵包 20 塊在現實世界我們可以用人腦進行計算，一個 20 兩個 40 ，十五個 300 塊，但是今天如果進入了數位的世界我們想要請電腦計算麵包的價格，難道我們要一次一次的打方程式嗎？ 1 * 20 ， 2 * 20 ， 15 * 20 ? 假設未來通貨膨脹麵包一個 25 塊怎麼辦？我們又要一次一次的計算嗎？這不符合工程師的性格，我們需要電腦儲存">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sass 的變數">
+<meta property="og:url" content="http://blog.kevinhes.art/2022/06/09/Sass-%E8%AE%8A%E6%95%B8%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="大姐的學習部落格">
+<meta property="og:description" content="變數是什麼？  比如說我們今天要賣麵包，然後一個麵包麵包 20 塊在現實世界我們可以用人腦進行計算，一個 20 兩個 40 ，十五個 300 塊，但是今天如果進入了數位的世界我們想要請電腦計算麵包的價格，難道我們要一次一次的打方程式嗎？ 1 * 20 ， 2 * 20 ， 15 * 20 ? 假設未來通貨膨脹麵包一個 25 塊怎麼辦？我們又要一次一次的計算嗎？這不符合工程師的性格，我們需要電腦儲存">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-06-09T06:46:30.000Z">
+<meta property="article:modified_time" content="2022-06-10T04:15:50.793Z">
+<meta property="article:author" content="kevinhes">
+<meta property="article:tag" content="Sass">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://blog.kevinhes.art/2022/06/09/Sass-%E8%AE%8A%E6%95%B8%E4%BD%BF%E7%94%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://blog.kevinhes.art/2022/06/09/Sass-%E8%AE%8A%E6%95%B8%E4%BD%BF%E7%94%A8/","path":"2022/06/09/Sass-變數使用/","title":"Sass 的變數"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Sass 的變數 | 大姐的學習部落格</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3R6W50QX78"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-3R6W50QX78","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="大姐的學習部落格" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">大姐的學習部落格</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">建築轉職前端的學習日常</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%8A%E6%95%B8%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">變數是什麼？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SassScript-%E7%9A%84%E8%AE%8A%E6%95%B8"><span class="nav-number">2.</span> <span class="nav-text">SassScript 的變數</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SassScript-%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">SassScript 的用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-SassScript-%E7%9A%84%E5%B8%B8%E8%A6%8B%E9%8C%AF%E8%AA%A4"><span class="nav-number">2.2.</span> <span class="nav-text">使用 SassScript 的常見錯誤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SassScript-%E7%9A%84%E6%95%B8%E5%AD%97%E3%80%81%E5%AD%97%E4%B8%B2%E4%BB%A5%E5%8F%8A%E9%A1%8F%E8%89%B2%E5%9E%8B%E5%88%A5"><span class="nav-number">3.</span> <span class="nav-text">SassScript 的數字、字串以及顏色型別</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B8%E5%AD%97%E5%9E%8B%E5%88%A5"><span class="nav-number">3.1.</span> <span class="nav-text">數字型別</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E4%B8%B2%E5%9E%8B%E5%88%A5"><span class="nav-number">3.2.</span> <span class="nav-text">字串型別</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%8F%E8%89%B2%E5%9E%8B%E5%88%A5"><span class="nav-number">3.3.</span> <span class="nav-text">顏色型別</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">4.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">kevinhes</p>
+  <div class="site-description" itemprop="description">前端學習筆記</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">標籤</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://blog.kevinhes.art/2022/06/09/Sass-%E8%AE%8A%E6%95%B8%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="kevinhes">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大姐的學習部落格">
+      <meta itemprop="description" content="前端學習筆記">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Sass 的變數 | 大姐的學習部落格">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Sass 的變數
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2022-06-09 14:46:30" itemprop="dateCreated datePublished" datetime="2022-06-09T14:46:30+08:00">2022-06-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2022-06-10 12:15:50" itemprop="dateModified" datetime="2022-06-10T12:15:50+08:00">2022-06-10</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/06/09/Sass-%E8%AE%8A%E6%95%B8%E4%BD%BF%E7%94%A8/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/06/09/Sass-變數使用/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="變數是什麼？"><a href="#變數是什麼？" class="headerlink" title="變數是什麼？"></a>變數是什麼？</h1><p>  比如說我們今天要賣麵包，然後一個麵包麵包 20 塊在現實世界我們可以用人腦進行計算，一個 20 兩個 40 ，十五個 300 塊，但是今天如果進入了數位的世界我們想要請電腦計算麵包的價格，難道我們要一次一次的打方程式嗎？ 1 * 20 ， 2 * 20 ， 15 * 20 ? 假設未來通貨膨脹麵包一個 25 塊怎麼辦？我們又要一次一次的計算嗎？這不符合工程師的性格，我們需要電腦儲存資訊讓我們重複利用且未來可以進行修改，而這個功能就是變數  </p>
+  <span id="more"></span>
+<h1 id="SassScript-的變數"><a href="#SassScript-的變數" class="headerlink" title="SassScript 的變數"></a>SassScript 的變數</h1><h2 id="SassScript-的用法"><a href="#SassScript-的用法" class="headerlink" title="SassScript 的用法"></a>SassScript 的用法</h2><p>  Sass 的變數可以使用 $ 字號進行宣告，而儲存的資料類別可以是下列這幾種</p>
+<ul>
+<li>數值</li>
+<li>字串</li>
+<li>顏色</li>
+<li>列表</li>
+<li>地圖（類似 JavaScript 的物件）</li>
+<li>布林</li>
+<li>空值</li>
+<li>函式</li>
+</ul>
+<p>  實際上在 Sass 宣告的範例程式碼如下（以顏色為範例）</p>
+  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$primary</span>: red</span><br></pre></td></tr></table></figure>
+<p>  這樣我們就可以在不同的地方去讀取這個變數</p>
+  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$primary</span>: red;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">a</span>&#123;</span><br><span class="line"><span class="attribute">color</span>: <span class="variable">$primary</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="variable">$primary</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  編譯成 CSS 的程式碼如下</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>, <span class="selector-tag">a</span> &#123;</span><br><span class="line"><span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">background</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  我們可以看到 <code>$primary</code> 都被換成 <code>red</code> 這個顏色了，這就是代表 Sass 讀取了 <code>$primary</code> 這個變數並在使用這個變數的地方帶入了 <code>$primary</code> 被賦予的值，也就是 <code>red</code> 這個顏色，而之後如果網站整體的風格顏色需要改變的話，我們也只需要修改 <code>$primary</code> 這個變數的值就好，所以說在 Sass 裏面使用用變數可以大幅得增加程式碼的複用性以及可修改性，之後就不用在 control + f 一個一個去調整顏色了</p>
+<h2 id="使用-SassScript-的常見錯誤"><a href="#使用-SassScript-的常見錯誤" class="headerlink" title="使用 SassScript 的常見錯誤"></a>使用 SassScript 的常見錯誤</h2><p>  由於 SassScript 已經是一種程式語言，所以不像是 CSS 較無編寫上的規範，比如說在宣告變數後在程式碼結束沒有加上 ; 分號的話，會出現編譯錯誤又或者是在變數宣告前就先使用變數，因為 SassScript 是由上往下編譯，所以這樣做的話就會導致編譯器找不到該變數，而出現編譯錯誤。</p>
+<h1 id="SassScript-的數字、字串以及顏色型別"><a href="#SassScript-的數字、字串以及顏色型別" class="headerlink" title="SassScript 的數字、字串以及顏色型別"></a>SassScript 的數字、字串以及顏色型別</h1><h2 id="數字型別"><a href="#數字型別" class="headerlink" title="數字型別"></a>數字型別</h2><p>  在數字型別中我們可以單純的輸入數字，也可以輸入帶單位的數字 (px, rem, em) 這些在 SassScript 中都可以被編譯，而這個型別方便的是數字可以進行加減乘除。</p>
+<p>  如果以網站的字型大小為例，我們可以預設一個字型大小基礎值，之後都是使用乘法來控制字體大小</p>
+  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$font-base</span>: <span class="number">16px</span>;</span><br><span class="line"><span class="variable">$font-lg</span>: font-base * <span class="number">1.25</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.header</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="variable">$font-lg</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  編譯成 CSS 的程式碼如下</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="selector-class">.header</span> &#123;</span><br><span class="line"><span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>  而且由於 Sass 不會將宣告變數的程式碼編譯進 CSS 所以可以減少 CSS 的程式碼數量</p>
+<h2 id="字串型別"><a href="#字串型別" class="headerlink" title="字串型別"></a>字串型別</h2><p>  只要在變數的值前後加上 <code>&#39; &#39;</code>, <code>&quot; &quot;</code> 就變被認定為字串型別，字串型別通常會用在字型或是跑環圈的時候</p>
+<h2 id="顏色型別"><a href="#顏色型別" class="headerlink" title="顏色型別"></a>顏色型別</h2><p>  文章開頭已經以顏色示範過如何宣告變數，這邊需要特別提到的是 SassScript 內建的函式，我們可以此函式來產生出相近色，函式示範如下<br>  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$base-color</span>: red;</span><br><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box1</span>&#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="variable">$base-color</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box2</span>&#123;</span><br><span class="line">  <span class="attribute">background</span>: darken(<span class="variable">$base-color</span>,<span class="number">40%</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box3</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">background</span>: lighten(<span class="variable">$base-color</span>,<span class="number">30%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>  我們可以看到 <code>.box2</code>, <code>.box3</code> 這兩個選擇器下面使用了 <code>darken</code>, <code>lighten</code> 這兩個函式，這兩個函式是什麼意思呢？就是說以 <code>$base-color</code> 這個顏色變數來進行增加亮度(lighten)或是減少亮度(darken)，而函式的第二個值就是指定要調整的數值，我們可以看編譯出來的程式碼</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line"><span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line"><span class="attribute">margin</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box1</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box2</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#330000</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box3</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#ff9999</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  我們可以看到 <code>.box2</code>, <code>.box3</code> 帶入的顏色並不是 red 而是調整過後的數值。</p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p>  <a target="_blank" rel="noopener" href="https://courses.hexschool.com/courses/enrolled/670032">六角學院-Sass 實戰全攻略 - 成為前 1% 的 CSS 頂尖好手</a><br>  <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/%E5%8F%98%E9%87%8F_(%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1)">變數 wiki</a><br>  <a target="_blank" rel="noopener" href="https://awdr74100.github.io/2020-05-25-scss-variables/">Sass &#x2F; SCSS 預處理器 - Variables 變數宣告與 !global、!default 標誌定義</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Sass/" rel="tag"># Sass</a>
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/06/07/%E5%9C%A8%E6%9C%AC%E6%A9%9F%E5%AE%89%E8%A3%9D%20Sass%20%E7%B7%A8%E8%AD%AF%E5%99%A8/" rel="prev" title="在本機安裝 Sass 編譯器">
+                  <i class="fa fa-chevron-left"></i> 在本機安裝 Sass 編譯器
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">若有需要轉載文章，麻煩請保留原作者名稱和原始連結</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"大姐的學習部落格","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

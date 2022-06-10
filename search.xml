@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Sass 是什麼？</title>
+    <url>/2022/06/03/Sass%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F/</url>
+    <content><![CDATA[<h1 id="為什麼我們要學習預處理器"><a href="#為什麼我們要學習預處理器" class="headerlink" title="為什麼我們要學習預處理器?"></a>為什麼我們要學習預處理器?</h1><p>  我們都知道網頁是由 HTML, CSS, JavaScript 所組成的，那隨著網頁功能日趨複雜，程式碼開始變得越來越長，而其帶來的後果就是程式碼難以修改及維護，增加了工作的時間也降低了工作的效率，而預處理器就是為了讓我我們可以更加快速並準確的編輯程式碼而誕生一種編譯器以及語言。</p>
+<p>  懶惰是人類的天性也是發明的動力，尤其是工程師這個族群更是如此，秉持著可以用一行程式碼解決的事情就不要用到兩行精神，工程師們想要將預處理器設計成可以用少量的程式碼編譯成瀏覽器可閱讀的檔案，並且希望這個預處理器使用的檔案以及語言可以達到模組化、重複利用並且容易閱讀這幾個特性，讓工程師不會在茫茫的程式海中迷失自我而去詢問我是誰？我在哪？</p>
+<span id="more"></span>
+
+<h1 id="什麼是-Sass"><a href="#什麼是-Sass" class="headerlink" title="什麼是 Sass ?"></a>什麼是 Sass ?</h1><p>  Sass 是 CSS 的預處理器，他可以做到模組化、自訂變數、陣列處理以及自訂函式等等的功能，並且可以把 CSS 的語法巢狀化，讓我們使用 CSS 選擇器的時候不用再 <code>.list li a &#123;&#125;</code> 這樣來撰寫，對於 CSS 程式碼而言這可以說是大幅的增加了程式碼的可讀性。</p>
+<p>  目前 Sass 提供了兩種語法，一個人如其名的 Sass 另一個則是比較接近 CSS 語法的 SCSS，其分別是 Sass 是使用縮排來達成巢狀結構，而 SCSS 是由大括號 {} ，而由於目前 SCSS 屬於主流的語法，所以往後相關的文章我們都使用 SCSS 來做程式碼的示範</p>
+<h1 id="SCSS-的程式碼怎麼寫？"><a href="#SCSS-的程式碼怎麼寫？" class="headerlink" title="SCSS 的程式碼怎麼寫？"></a>SCSS 的程式碼怎麼寫？</h1><p>  基本上與 CSS 是完全相同，今天如果使用 CSS 的方式撰寫 SCSS 的話預處理也是會接受並且編譯，那既然如此那 CSS 跟 SCSS 到底有什麼不同？最大的不同就是可以使用巢狀結構來撰寫在 CSS 中如果我們要寫下列的程式碼<br>  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">text-decoration</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.navbar</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.navbar</span> <span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">48px</span>;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.nav-list</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.nav-list</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="number">16px</span>;</span><br><span class="line">  <span class="attribute">padding-right</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>  在 SCSS 裏面我們可以改寫成這個樣子<br>  <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">text-decoration</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.navbar</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">16px</span>;</span><br><span class="line">  <span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">48px</span>;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.nav-list</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">padding-left</span>: <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">padding-right</span>: <span class="number">16px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>  所以我們就可以利用這個特性，來大幅的增加程式碼的可讀性不用像在 CSS 撰寫的時候有著一堆又臭又長的子選擇器</p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p>  <a href="https://courses.hexschool.com/courses/enrolled/670032">六角學院-Sass 實戰全攻略 - 成為前 1% 的 CSS 頂尖好手</a><br>  <a href="https://zh.wikipedia.org/zh-tw/Sass">Sass wiki</a></p>
+]]></content>
+      <tags>
+        <tag>Sass</tag>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在本機安裝 Sass 編譯器</title>
+    <url>/2022/06/07/%E5%9C%A8%E6%9C%AC%E6%A9%9F%E5%AE%89%E8%A3%9D%20Sass%20%E7%B7%A8%E8%AD%AF%E5%99%A8/</url>
+    <content><![CDATA[<h1 id="如何在本機使用-Sass"><a href="#如何在本機使用-Sass" class="headerlink" title="如何在本機使用 Sass?"></a>如何在本機使用 Sass?</h1><p>  我個人使用的方式就是使用 VS code 的插件，live Sass compiler 的方式來進行編譯，我們可以在 VS code 的 Marketplace 裡面找到下面的插件<br>  <a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass">Live Sass Compiler</a></p>
+  <img src="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%888.11.37.png?alt=media&token=925ebfda-490c-4682-a170-5ace3ea5cba0" style="width:100%">
+
+  <span id="more"></span>
+
+<p>  Live Sass Compiler 使用上也非常容易，安裝好之後我們可以在專案資料夾中新建一個 Sass 檔案，不論是 Sass 或是 SCSS 都可以，當專案資料夾裡面有 Sass 檔時系統就會自動偵測到接下來我們就會看到 VS code 的下方功能欄出現 Watch Sass 的字樣，按下去它就自動編譯了</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/sass%2F%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%888.43.14.png?alt=media&token=00fe9afe-304f-4fa3-92d3-205493f7e1d3" alt="img"></p>
+<p>  不過如果在沒有修改設定的情況下 Live Sass Compiler 會在 Sass 檔的同一層資料夾中自動生成 CSS 檔以及一個 css.map 的檔案，如果要指定資料夾的話可以依照下列步驟來設定</p>
+<ol>
+<li>進入 Live Sass Compiler 設定檔</li>
+</ol>
+  <img src="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/sass%2F%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%889.06.57.png?alt=media&token=30cdc6ef-c81a-438f-8e8f-36a489072d98" style="width:100%">
+  <img src="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/sass%2F%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%889.07.10.png?alt=media&token=85fb4277-243f-4fb9-857d-aa8c667622d9" style="width:100%">
+
+<ol start="2">
+<li>並在 settings.json 檔中輸入以下程式碼</li>
+</ol>
+  <figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;liveSassCompile.settings.formats&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;format&quot;</span><span class="punctuation">:</span> <span class="string">&quot;expanded&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;extensionName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.css&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;savePath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/assets/style/css&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+<p>  最重要的就是 <code>&quot;savePath&quot;</code> 後面字串的位置，那是 CSS 檔的生成位置，如果像案例裡面有把 CSS 檔案巢狀的放在資料夾內的狀況，當你資料夾還沒有建立的時候它會幫你自動生成，十分方便。</p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p>  <a href="https://courses.hexschool.com/courses/enrolled/670032">六角學院-Sass 實戰全攻略 - 成為前 1% 的 CSS 頂尖好手</a><br>  <a href="https://awdr74100.github.io/2020-05-18-scss-install/">Roya Sass &#x2F; SCSS 預處理器 - 基本介紹與編譯環境建立</a>
+ </p>
+]]></content>
+      <tags>
+        <tag>Sass</tag>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Sass 的變數</title>
+    <url>/2022/06/09/Sass-%E8%AE%8A%E6%95%B8%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h1 id="變數是什麼？"><a href="#變數是什麼？" class="headerlink" title="變數是什麼？"></a>變數是什麼？</h1><p>  比如說我們今天要賣麵包，然後一個麵包麵包 20 塊在現實世界我們可以用人腦進行計算，一個 20 兩個 40 ，十五個 300 塊，但是今天如果進入了數位的世界我們想要請電腦計算麵包的價格，難道我們要一次一次的打方程式嗎？ 1 * 20 ， 2 * 20 ， 15 * 20 ? 假設未來通貨膨脹麵包一個 25 塊怎麼辦？我們又要一次一次的計算嗎？這不符合工程師的性格，我們需要電腦儲存資訊讓我們重複利用且未來可以進行修改，而這個功能就是變數  </p>
+  <span id="more"></span>
+<h1 id="SassScript-的變數"><a href="#SassScript-的變數" class="headerlink" title="SassScript 的變數"></a>SassScript 的變數</h1><h2 id="SassScript-的用法"><a href="#SassScript-的用法" class="headerlink" title="SassScript 的用法"></a>SassScript 的用法</h2><p>  Sass 的變數可以使用 $ 字號進行宣告，而儲存的資料類別可以是下列這幾種</p>
+<ul>
+<li>數值</li>
+<li>字串</li>
+<li>顏色</li>
+<li>列表</li>
+<li>地圖（類似 JavaScript 的物件）</li>
+<li>布林</li>
+<li>空值</li>
+<li>函式</li>
+</ul>
+<p>  實際上在 Sass 宣告的範例程式碼如下（以顏色為範例）</p>
+  <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$primary</span>: red</span><br></pre></td></tr></table></figure>
+<p>  這樣我們就可以在不同的地方去讀取這個變數</p>
+  <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$primary</span>: red;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span>,<span class="selector-tag">h2</span>,<span class="selector-tag">h3</span>,<span class="selector-tag">a</span>&#123;</span><br><span class="line"><span class="attribute">color</span>: <span class="variable">$primary</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="variable">$primary</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  編譯成 CSS 的程式碼如下</p>
+  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>, <span class="selector-tag">a</span> &#123;</span><br><span class="line"><span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">background</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  我們可以看到 <code>$primary</code> 都被換成 <code>red</code> 這個顏色了，這就是代表 Sass 讀取了 <code>$primary</code> 這個變數並在使用這個變數的地方帶入了 <code>$primary</code> 被賦予的值，也就是 <code>red</code> 這個顏色，而之後如果網站整體的風格顏色需要改變的話，我們也只需要修改 <code>$primary</code> 這個變數的值就好，所以說在 Sass 裏面使用用變數可以大幅得增加程式碼的複用性以及可修改性，之後就不用在 control + f 一個一個去調整顏色了</p>
+<h2 id="使用-SassScript-的常見錯誤"><a href="#使用-SassScript-的常見錯誤" class="headerlink" title="使用 SassScript 的常見錯誤"></a>使用 SassScript 的常見錯誤</h2><p>  由於 SassScript 已經是一種程式語言，所以不像是 CSS 較無編寫上的規範，比如說在宣告變數後在程式碼結束沒有加上 ; 分號的話，會出現編譯錯誤又或者是在變數宣告前就先使用變數，因為 SassScript 是由上往下編譯，所以這樣做的話就會導致編譯器找不到該變數，而出現編譯錯誤。</p>
+<h1 id="SassScript-的數字、字串以及顏色型別"><a href="#SassScript-的數字、字串以及顏色型別" class="headerlink" title="SassScript 的數字、字串以及顏色型別"></a>SassScript 的數字、字串以及顏色型別</h1><h2 id="數字型別"><a href="#數字型別" class="headerlink" title="數字型別"></a>數字型別</h2><p>  在數字型別中我們可以單純的輸入數字，也可以輸入帶單位的數字 (px, rem, em) 這些在 SassScript 中都可以被編譯，而這個型別方便的是數字可以進行加減乘除。</p>
+<p>  如果以網站的字型大小為例，我們可以預設一個字型大小基礎值，之後都是使用乘法來控制字體大小</p>
+  <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$font-base</span>: <span class="number">16px</span>;</span><br><span class="line"><span class="variable">$font-lg</span>: font-base * <span class="number">1.25</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.header</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="variable">$font-lg</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  編譯成 CSS 的程式碼如下</p>
+  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"> <span class="selector-class">.header</span> &#123;</span><br><span class="line"><span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>  而且由於 Sass 不會將宣告變數的程式碼編譯進 CSS 所以可以減少 CSS 的程式碼數量</p>
+<h2 id="字串型別"><a href="#字串型別" class="headerlink" title="字串型別"></a>字串型別</h2><p>  只要在變數的值前後加上 <code>&#39; &#39;</code>, <code>&quot; &quot;</code> 就變被認定為字串型別，字串型別通常會用在字型或是跑環圈的時候</p>
+<h2 id="顏色型別"><a href="#顏色型別" class="headerlink" title="顏色型別"></a>顏色型別</h2><p>  文章開頭已經以顏色示範過如何宣告變數，這邊需要特別提到的是 SassScript 內建的函式，我們可以此函式來產生出相近色，函式示範如下<br>  <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$base-color</span>: red;</span><br><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box1</span>&#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="variable">$base-color</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box2</span>&#123;</span><br><span class="line">  <span class="attribute">background</span>: darken(<span class="variable">$base-color</span>,<span class="number">40%</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box3</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">background</span>: lighten(<span class="variable">$base-color</span>,<span class="number">30%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>  我們可以看到 <code>.box2</code>, <code>.box3</code> 這兩個選擇器下面使用了 <code>darken</code>, <code>lighten</code> 這兩個函式，這兩個函式是什麼意思呢？就是說以 <code>$base-color</code> 這個顏色變數來進行增加亮度(lighten)或是減少亮度(darken)，而函式的第二個值就是指定要調整的數值，我們可以看編譯出來的程式碼</p>
+  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line"><span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line"><span class="attribute">margin</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box1</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box2</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#330000</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.box3</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#ff9999</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  我們可以看到 <code>.box2</code>, <code>.box3</code> 帶入的顏色並不是 red 而是調整過後的數值。</p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p>  <a href="https://courses.hexschool.com/courses/enrolled/670032">六角學院-Sass 實戰全攻略 - 成為前 1% 的 CSS 頂尖好手</a><br>  <a href="https://zh.wikipedia.org/zh-tw/%E5%8F%98%E9%87%8F_(%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1)">變數 wiki</a><br>  <a href="https://awdr74100.github.io/2020-05-25-scss-variables/">Sass &#x2F; SCSS 預處理器 - Variables 變數宣告與 !global、!default 標誌定義</a></p>
+]]></content>
+      <tags>
+        <tag>Sass</tag>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+</search>

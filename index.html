@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.kevinhes.art","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.11.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.kevinhes.art","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.11.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3R6W50QX78"></script>
@@ -91,6 +91,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -99,11 +100,37 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜尋
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
         
@@ -141,7 +168,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -184,6 +211,103 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://blog.kevinhes.art/2022/06/09/Sass-%E8%AE%8A%E6%95%B8%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="kevinhes">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大姐的學習部落格">
+      <meta itemprop="description" content="前端學習筆記">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 大姐的學習部落格">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/06/09/Sass-%E8%AE%8A%E6%95%B8%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">Sass 的變數</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2022-06-09 14:46:30" itemprop="dateCreated datePublished" datetime="2022-06-09T14:46:30+08:00">2022-06-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2022-06-10 12:15:50" itemprop="dateModified" datetime="2022-06-10T12:15:50+08:00">2022-06-10</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/06/09/Sass-%E8%AE%8A%E6%95%B8%E4%BD%BF%E7%94%A8/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/06/09/Sass-變數使用/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="變數是什麼？"><a href="#變數是什麼？" class="headerlink" title="變數是什麼？"></a>變數是什麼？</h1><p>  比如說我們今天要賣麵包，然後一個麵包麵包 20 塊在現實世界我們可以用人腦進行計算，一個 20 兩個 40 ，十五個 300 塊，但是今天如果進入了數位的世界我們想要請電腦計算麵包的價格，難道我們要一次一次的打方程式嗎？ 1 * 20 ， 2 * 20 ， 15 * 20 ? 假設未來通貨膨脹麵包一個 25 塊怎麼辦？我們又要一次一次的計算嗎？這不符合工程師的性格，我們需要電腦儲存資訊讓我們重複利用且未來可以進行修改，而這個功能就是變數  </p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/09/Sass-%E8%AE%8A%E6%95%B8%E4%BD%BF%E7%94%A8/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://blog.kevinhes.art/2022/06/07/%E5%9C%A8%E6%9C%AC%E6%A9%9F%E5%AE%89%E8%A3%9D%20Sass%20%E7%B7%A8%E8%AD%AF%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -212,9 +336,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
-      
 
-      <time title="創建時間：2022-06-07 17:08:14 / 修改時間：21:14:27" itemprop="dateCreated datePublished" datetime="2022-06-07T17:08:14+08:00">2022-06-07</time>
+      <time title="創建時間：2022-06-07 17:08:14" itemprop="dateCreated datePublished" datetime="2022-06-07T17:08:14+08:00">2022-06-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新於</span>
+      <time title="修改時間：2022-06-09 14:41:43" itemprop="dateModified" datetime="2022-06-09T14:41:43+08:00">2022-06-09</time>
     </span>
 
   
@@ -243,24 +373,14 @@
     <div class="post-body" itemprop="articleBody">
           <h1 id="如何在本機使用-Sass"><a href="#如何在本機使用-Sass" class="headerlink" title="如何在本機使用 Sass?"></a>如何在本機使用 Sass?</h1><p>  我個人使用的方式就是使用 VS code 的插件，live Sass compiler 的方式來進行編譯，我們可以在 VS code 的 Marketplace 裡面找到下面的插件<br>  <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass">Live Sass Compiler</a></p>
   <img src="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%888.11.37.png?alt=media&token=925ebfda-490c-4682-a170-5ace3ea5cba0" style="width:100%">
-
-<p>  Live Sass Compiler 使用上也非常容易，安裝好之後我們可以在專案資料夾中新建一個 Sass 檔案，不論是 Sass 或是 SCSS 都可以，當專案資料夾裡面有 Sass 檔時系統就會自動偵測到接下來我們就會看到 VS code 的下方功能欄出現 Watch Sass 的字樣，按下去它就自動編譯了</p>
-<p>  <img src="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/sass%2F%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%888.43.14.png?alt=media&token=00fe9afe-304f-4fa3-92d3-205493f7e1d3" alt="img"></p>
-<p>  不過如果在沒有修改設定的情況下 Live Sass Compiler 會在 Sass 檔的同一層資料夾中自動生成 CSS 檔以及一個 css.map 的檔案，如果要指定資料夾的話可以依照下列步驟來設定</p>
-<ol>
-<li>進入 Live Sass Compiler 設定檔</li>
-</ol>
-  <img src="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/sass%2F%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%889.06.57.png?alt=media&token=30cdc6ef-c81a-438f-8e8f-36a489072d98" style="width:100%">
-  <img src="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/sass%2F%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%889.07.10.png?alt=media&token=85fb4277-243f-4fb9-857d-aa8c667622d9" style="width:100%">
-
-<ol start="2">
-<li>並在 settings.json 檔中輸入以下程式碼</li>
-</ol>
-  <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;liveSassCompile.settings.formats&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;format&quot;</span><span class="punctuation">:</span> <span class="string">&quot;expanded&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;extensionName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.css&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;savePath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/assets/style/css&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-<p>  最重要的就是 <code>&quot;savePath&quot;</code> 後面字串的位置，那是 CSS 檔的生成位置，如果像案例裡面有把 CSS 檔案巢狀的放在資料夾內的狀況，當你資料夾還沒有建立的時候它會幫你自動生成，十分方便。</p>
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p>  <a target="_blank" rel="noopener" href="https://courses.hexschool.com/courses/enrolled/670032">六角學院-Sass 實戰全攻略 - 成為前 1% 的 CSS 頂尖好手</a><br>  <a target="_blank" rel="noopener" href="https://awdr74100.github.io/2020-05-18-scss-install/">Roya Sass &#x2F; SCSS 預處理器 - 基本介紹與編譯環境建立</a>
- </p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/07/%E5%9C%A8%E6%9C%AC%E6%A9%9F%E5%AE%89%E8%A3%9D%20Sass%20%E7%B7%A8%E8%AD%AF%E5%99%A8/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -322,7 +442,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-06-07 19:52:49" itemprop="dateModified" datetime="2022-06-07T19:52:49+08:00">2022-06-07</time>
+      <time title="修改時間：2022-06-09 14:42:06" itemprop="dateModified" datetime="2022-06-09T14:42:06+08:00">2022-06-09</time>
     </span>
 
   
@@ -351,11 +471,14 @@
     <div class="post-body" itemprop="articleBody">
           <h1 id="為什麼我們要學習預處理器"><a href="#為什麼我們要學習預處理器" class="headerlink" title="為什麼我們要學習預處理器?"></a>為什麼我們要學習預處理器?</h1><p>  我們都知道網頁是由 HTML, CSS, JavaScript 所組成的，那隨著網頁功能日趨複雜，程式碼開始變得越來越長，而其帶來的後果就是程式碼難以修改及維護，增加了工作的時間也降低了工作的效率，而預處理器就是為了讓我我們可以更加快速並準確的編輯程式碼而誕生一種編譯器以及語言。</p>
 <p>  懶惰是人類的天性也是發明的動力，尤其是工程師這個族群更是如此，秉持著可以用一行程式碼解決的事情就不要用到兩行精神，工程師們想要將預處理器設計成可以用少量的程式碼編譯成瀏覽器可閱讀的檔案，並且希望這個預處理器使用的檔案以及語言可以達到模組化、重複利用並且容易閱讀這幾個特性，讓工程師不會在茫茫的程式海中迷失自我而去詢問我是誰？我在哪？</p>
-<h1 id="什麼是-Sass"><a href="#什麼是-Sass" class="headerlink" title="什麼是 Sass ?"></a>什麼是 Sass ?</h1><p>  Sass 是 CSS 的預處理器，他可以做到模組化、自訂變數、陣列處理以及自訂函式等等的功能，並且可以把 CSS 的語法巢狀化，讓我們使用 CSS 選擇器的時候不用再 <code>.list li a &#123;&#125;</code> 這樣來撰寫，對於 CSS 程式碼而言這可以說是大幅的增加了程式碼的可讀性。</p>
-<p>  目前 Sass 提供了兩種語法，一個人如其名的 Sass 另一個則是比較接近 CSS 語法的 SCSS，其分別是 Sass 是使用縮排來達成巢狀結構，而 SCSS 是由大括號 {} ，而由於目前 SCSS 屬於主流的語法，所以往後相關的文章我們都使用 SCSS 來做程式碼的示範</p>
-<h1 id="SCSS-的程式碼怎麼寫？"><a href="#SCSS-的程式碼怎麼寫？" class="headerlink" title="SCSS 的程式碼怎麼寫？"></a>SCSS 的程式碼怎麼寫？</h1><p>  基本上與 CSS 是完全相同，今天如果使用 CSS 的方式撰寫 SCSS 的話預處理也是會接受並且編譯，那既然如此那 CSS 跟 SCSS 到底有什麼不同？最大的不同就是可以使用巢狀結構來撰寫在 CSS 中如果我們要寫下列的程式碼<br>  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">text-decoration</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.navbar</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.navbar</span> <span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">48px</span>;</span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.nav-list</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.nav-list</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="number">16px</span>;</span><br><span class="line">  <span class="attribute">padding-right</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>  在 SCSS 裏面我們可以改寫成這個樣子<br>  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">text-decoration</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.navbar</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">16px</span>;</span><br><span class="line">  <span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">48px</span>;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.nav-list</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">padding-left</span>: <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">padding-right</span>: <span class="number">16px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>  所以我們就可以利用這個特性，來大幅的增加程式碼的可讀性不用像在 CSS 撰寫的時候有著一堆又臭又長的子選擇器</p>
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p>  <a target="_blank" rel="noopener" href="https://courses.hexschool.com/courses/enrolled/670032">六角學院-Sass 實戰全攻略 - 成為前 1% 的 CSS 頂尖好手</a><br>  <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-tw/Sass">Sass wiki</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/03/Sass%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -385,14 +508,11 @@
   &copy; 
   <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class=""></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">kevinhes</span>
+  <span class="author" itemprop="copyrightHolder">若有需要轉載文章，麻煩請保留原作者名稱和原始連結</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
-  </div>
-  <div class="addthis_inline_share_toolbox">
-    <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-62a182e41174e55b" async="async"></script>
   </div>
 
     </div>
@@ -403,6 +523,8 @@
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
 
   
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
