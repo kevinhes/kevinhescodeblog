@@ -103,7 +103,7 @@
 
 <p>  我們可以看到 <code>$primary</code> 變數變成了紫色，意思就是說如果重複宣告變數的話後面的變數的值是會修改前面的變數內容的。</p>
   <span id="more"></span>
-<h1 id="替變數加入權重的概念-default"><a href="#替變數加入權重的概念-default" class="headerlink" title="替變數加入權重的概念 !default"></a>替變數加入權重的概念 !default</h1><p>  上一節提到了 Sass 變數覆蓋的問題，現在我們來學怎麼為變數加上預設值，當我們在變數後面加上了 <code>!default</code> 的時候此變數的賦值就會變成預設值，在權重上來說它就變成了最低的權重，覆蓋他變得十分容易，也無需在意前後問題，我們看看上一節的範例程式碼如果我們在第二宣告的變數上加上 <code>!default</code> 會怎麼樣？ </p>
+<h1 id="替變數加入權重的概念-default"><a href="#替變數加入權重的概念-default" class="headerlink" title="替變數加入權重的概念 !default"></a>替變數加入權重的概念 !default</h1><p>  上一節提到了 Sass 變數覆蓋的問題，現在我們來學怎麼為變數加上預設值，當我們在變數後面加上了 <code>!default</code> 的時候此變數的賦值就會變成預設值，在權重上來說它就變成了最低的權重，覆蓋他變得十分容易，也無需在意前後問題，我們看看上一節的範例程式碼如果我們在第二次宣告的變數上加上 <code>!default</code> 會怎麼樣？ </p>
   <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$primary</span>: red;</span><br><span class="line"><span class="variable">$primary</span>: purple !default;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">$primary</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>  編譯結果就會變成這樣</p>
@@ -120,6 +120,44 @@
 
 <p>  最後 h2 也變成了紫色，這就是  <code>!global</code> 的用法。</p>
 <h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p>  <a href="https://courses.hexschool.com/courses/enrolled/670032">六角學院-Sass 實戰全攻略 - 成為前 1% 的 CSS 頂尖好手</a><br>  <a href="https://awdr74100.github.io/2020-05-25-scss-variables/">Sass &#x2F; SCSS 預處理器 - Variables 變數宣告與 !global、!default 標誌定義</a></p>
+]]></content>
+      <tags>
+        <tag>Sass</tag>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Sass變數 - List、Map</title>
+    <url>/2022/06/11/Sass%E8%AE%8A%E6%95%B8-List%EF%BC%8CMap/</url>
+    <content><![CDATA[<h1 id="進階的變數類型"><a href="#進階的變數類型" class="headerlink" title="進階的變數類型"></a>進階的變數類型</h1><p>  上一章我們介紹了什麼是變數以及基礎的變數類型，那今天我們就來介紹稍微進階的 Map 以及 List。</p>
+<h1 id="List"><a href="#List" class="headerlink" title="List"></a>List</h1><p>  我們可以把 List 這個變數類型看成 JavaScript 的陣列，就是宣告的變數裡面存放了複數的值，不同的是 List 不需要用逗點隔開，只要使用空白 Sass 也可以編譯，我們來看看程式碼怎麼寫</p>
+  <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$colors</span>: red blue purple gray;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line"><span class="attribute">color</span>:nth(<span class="variable">$colors</span>, <span class="number">3</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  跟 JavaScript 的陣列不同的是 Sass 的 List 第一個不是從 0 開始計算而是從 1 開始算，而範例程式碼內的 nth 是 List 的讀取方式，代表的是我要讀取第三個 List 數值。</p>
+  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: purple;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  最後編譯的結果就是讀取了第三個值 purple 並讓 h1 變成了紫色</p>
+  <span id="more"></span>
+
+<h1 id="其他的-List-方法"><a href="#其他的-List-方法" class="headerlink" title="其他的 List 方法"></a>其他的 List 方法</h1><p>  如同 JavaScript 的陣列有很多不同的方法，比如說移除、新增等等的在 List 裏面都可以做到，只是目前我還沒有遇到需要使用這些方法的時候，但我們先學起來以後真的遇到了才不會手忙腳亂</p>
+<p>  List 還有以下這些方法</p>
+<ul>
+<li>append - 在 List 的最後的位置加上值</li>
+<li>join - 把兩個 List 結合</li>
+<li>length - 查詢 List 的長度</li>
+<li>set-nth - 修改指定位置的值</li>
+</ul>
+<h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><p>  Map 我們可以看成 JavaScript 的物件型別，也就是說我們可以在內部儲存複數的 Key 值以及 Value 值，而 Map 就跟物件一樣都要使用逗號隔開（最後一個可以不用），我們可以來看看 Map 怎麼撰寫</p>
+  <figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$colors</span>:(</span><br><span class="line">  primary: red,</span><br><span class="line">  second: blue,</span><br><span class="line">  info: green</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: map-get(<span class="variable">$colors</span>, info)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  首先我們可以看到 Map 是用小括號包起來的，在小括號裏面就是 Map 的內容，而存放在裡面的 key 是不用再加上 $ 字號，這跟 JavaScript 一樣物件內部不用使用 let 、 const 來宣告，而編譯結果就是</p>
+  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="map-方法"><a href="#map-方法" class="headerlink" title="map 方法"></a>map 方法</h1><p>  在上一節的範例程式碼中我們可以看到如果要讀取 Map 的資訊的話要使用 <code>map-get</code> 的方法，使用上很容易就是 <code>map-get($變數, key值)</code> 來使用，那我們來看看其他的 Map 方法</p>
+<ul>
+<li>map-merge($map1, $map2) - 合併兩個 Map</li>
+<li>map-remove($map, $key) - 移除指定位置的 key</li>
+<li>map-keys($map) - 取出所有的 key 值</li>
+<li>map-values($map) - 取出所有的 value 值</li>
+</ul>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p>  <a href="https://courses.hexschool.com/courses/enrolled/670032">六角學院-Sass 實戰全攻略 - 成為前 1% 的 CSS 頂尖好手</a><br>  <a href="https://ithelp.ithome.com.tw/articles/10161389">Sass教學 (40) - 使用Sass Maps提升程式可讀、變數群組性</a><br>  <a href="https://awdr74100.github.io/2020-05-25-scss-variables/">Sass &#x2F; SCSS 預處理器 - Variables 變數宣告與 !global、!default 標誌定義</a></p>
 ]]></content>
       <tags>
         <tag>Sass</tag>

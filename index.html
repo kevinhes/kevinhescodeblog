@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -184,6 +184,89 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://blog.kevinhes.art/2022/06/11/Sass%E8%AE%8A%E6%95%B8-List%EF%BC%8CMap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="kevinhes">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大姐的學習部落格">
+      <meta itemprop="description" content="前端學習筆記">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 大姐的學習部落格">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/06/11/Sass%E8%AE%8A%E6%95%B8-List%EF%BC%8CMap/" class="post-title-link" itemprop="url">Sass變數 - List、Map</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+      
+
+      <time title="創建時間：2022-06-11 10:50:50 / 修改時間：14:57:27" itemprop="dateCreated datePublished" datetime="2022-06-11T10:50:50+08:00">2022-06-11</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="進階的變數類型"><a href="#進階的變數類型" class="headerlink" title="進階的變數類型"></a>進階的變數類型</h1><p>  上一章我們介紹了什麼是變數以及基礎的變數類型，那今天我們就來介紹稍微進階的 Map 以及 List。</p>
+<h1 id="List"><a href="#List" class="headerlink" title="List"></a>List</h1><p>  我們可以把 List 這個變數類型看成 JavaScript 的陣列，就是宣告的變數裡面存放了複數的值，不同的是 List 不需要用逗點隔開，只要使用空白 Sass 也可以編譯，我們來看看程式碼怎麼寫</p>
+  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$colors</span>: red blue purple gray;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line"><span class="attribute">color</span>:nth(<span class="variable">$colors</span>, <span class="number">3</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  跟 JavaScript 的陣列不同的是 Sass 的 List 第一個不是從 0 開始計算而是從 1 開始算，而範例程式碼內的 nth 是 List 的讀取方式，代表的是我要讀取第三個 List 數值。</p>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: purple;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  最後編譯的結果就是讀取了第三個值 purple 並讓 h1 變成了紫色</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/06/11/Sass%E8%AE%8A%E6%95%B8-List%EF%BC%8CMap/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://blog.kevinhes.art/2022/06/10/%E9%97%9C%E6%96%BC-Sass-%E8%AE%8A%E6%95%B8%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -214,7 +297,7 @@
       <span class="post-meta-item-text">發表於</span>
       
 
-      <time title="創建時間：2022-06-10 12:17:42 / 修改時間：20:03:01" itemprop="dateCreated datePublished" datetime="2022-06-10T12:17:42+08:00">2022-06-10</time>
+      <time title="創建時間：2022-06-10 12:17:42 / 修改時間：21:31:19" itemprop="dateCreated datePublished" datetime="2022-06-10T12:17:42+08:00">2022-06-10</time>
     </span>
 
   
