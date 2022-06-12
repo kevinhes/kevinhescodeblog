@@ -30,34 +30,29 @@
   gtag('config', 'G-3R6W50QX78');
 </script>
 
-    <meta name="description" content="如何在本機使用 Sass?  我個人使用的方式就是使用 VS code 的插件，live Sass compiler 的方式來進行編譯，我們可以在 VS code 的 Marketplace 裡面找到下面的插件  Live Sass Compiler">
+    <meta name="description" content="為什麼需要模組化？  試想如果每一次開啟一個新專案都必須要重零開始那是多麼累人的一件事情？尤其人類的大腦並不適合記憶比較適合思考，當我們遇到程式設計中重複的技術問題時，如果要使用的時候都必須回想，工作流程上一直被打斷那效率自然就不好，這個時候如果我們把這些使用上重複率很高的程式碼獨立成各個不同的檔案，當這個技術有需要的時候再載入的話，就可以免去回憶的這個步驟，加快我們的工作效率，而這個行為就是模組">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在本機安裝 Sass 編譯器">
-<meta property="og:url" content="http://blog.kevinhes.art/2022/06/07/%E5%9C%A8%E6%9C%AC%E6%A9%9F%E5%AE%89%E8%A3%9D%20Sass%20%E7%B7%A8%E8%AD%AF%E5%99%A8/index.html">
+<meta property="og:title" content="Sass 的模組化管理">
+<meta property="og:url" content="http://blog.kevinhes.art/2022/06/12/Sass-%E7%9A%84%E6%A8%A1%E7%B5%84%E5%8C%96%E7%AE%A1%E7%90%86/index.html">
 <meta property="og:site_name" content="大姐的學習部落格">
-<meta property="og:description" content="如何在本機使用 Sass?  我個人使用的方式就是使用 VS code 的插件，live Sass compiler 的方式來進行編譯，我們可以在 VS code 的 Marketplace 裡面找到下面的插件  Live Sass Compiler">
+<meta property="og:description" content="為什麼需要模組化？  試想如果每一次開啟一個新專案都必須要重零開始那是多麼累人的一件事情？尤其人類的大腦並不適合記憶比較適合思考，當我們遇到程式設計中重複的技術問題時，如果要使用的時候都必須回想，工作流程上一直被打斷那效率自然就不好，這個時候如果我們把這些使用上重複率很高的程式碼獨立成各個不同的檔案，當這個技術有需要的時候再載入的話，就可以免去回憶的這個步驟，加快我們的工作效率，而這個行為就是模組">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%888.11.37.png?alt=media&token=925ebfda-490c-4682-a170-5ace3ea5cba0">
-<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/sass%2F%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%888.43.14.png?alt=media&token=00fe9afe-304f-4fa3-92d3-205493f7e1d3">
-<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/sass%2F%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%889.06.57.png?alt=media&token=30cdc6ef-c81a-438f-8e8f-36a489072d98">
-<meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/sass%2F%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%889.07.10.png?alt=media&token=85fb4277-243f-4fb9-857d-aa8c667622d9">
-<meta property="article:published_time" content="2022-06-07T09:08:14.000Z">
-<meta property="article:modified_time" content="2022-06-09T06:41:43.865Z">
+<meta property="article:published_time" content="2022-06-12T03:01:28.000Z">
+<meta property="article:modified_time" content="2022-06-12T05:04:16.704Z">
 <meta property="article:author" content="kevinhes">
 <meta property="article:tag" content="Sass">
 <meta property="article:tag" content="CSS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%888.11.37.png?alt=media&token=925ebfda-490c-4682-a170-5ace3ea5cba0">
 
 
-<link rel="canonical" href="http://blog.kevinhes.art/2022/06/07/%E5%9C%A8%E6%9C%AC%E6%A9%9F%E5%AE%89%E8%A3%9D%20Sass%20%E7%B7%A8%E8%AD%AF%E5%99%A8/">
+<link rel="canonical" href="http://blog.kevinhes.art/2022/06/12/Sass-%E7%9A%84%E6%A8%A1%E7%B5%84%E5%8C%96%E7%AE%A1%E7%90%86/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://blog.kevinhes.art/2022/06/07/%E5%9C%A8%E6%9C%AC%E6%A9%9F%E5%AE%89%E8%A3%9D%20Sass%20%E7%B7%A8%E8%AD%AF%E5%99%A8/","path":"2022/06/07/在本機安裝 Sass 編譯器/","title":"在本機安裝 Sass 編譯器"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://blog.kevinhes.art/2022/06/12/Sass-%E7%9A%84%E6%A8%A1%E7%B5%84%E5%8C%96%E7%AE%A1%E7%90%86/","path":"2022/06/12/Sass-的模組化管理/","title":"Sass 的模組化管理"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>在本機安裝 Sass 編譯器 | 大姐的學習部落格</title>
+<title>Sass 的模組化管理 | 大姐的學習部落格</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3R6W50QX78"></script>
   <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-3R6W50QX78","only_pageview":false}</script>
@@ -137,7 +132,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%9C%A8%E6%9C%AC%E6%A9%9F%E4%BD%BF%E7%94%A8-Sass"><span class="nav-number">1.</span> <span class="nav-text">如何在本機使用 Sass?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">2.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%82%BA%E4%BB%80%E9%BA%BC%E9%9C%80%E8%A6%81%E6%A8%A1%E7%B5%84%E5%8C%96%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">為什麼需要模組化？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9C%A8-Sass-%E4%B8%AD%E7%9A%84%E6%A8%A1%E7%B5%84%E5%8C%96"><span class="nav-number">2.</span> <span class="nav-text">在 Sass 中的模組化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%A8%A1%E7%B5%84%E5%8C%96%E6%AA%94%E6%A1%88"><span class="nav-number">3.</span> <span class="nav-text">如何模組化檔案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E8%A6%8B%E9%8C%AF%E8%AA%A4"><span class="nav-number">4.</span> <span class="nav-text">常見錯誤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">5.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -194,7 +189,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="http://blog.kevinhes.art/2022/06/07/%E5%9C%A8%E6%9C%AC%E6%A9%9F%E5%AE%89%E8%A3%9D%20Sass%20%E7%B7%A8%E8%AD%AF%E5%99%A8/">
+    <link itemprop="mainEntityOfPage" href="http://blog.kevinhes.art/2022/06/12/Sass-%E7%9A%84%E6%A8%A1%E7%B5%84%E5%8C%96%E7%AE%A1%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -207,12 +202,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="在本機安裝 Sass 編譯器 | 大姐的學習部落格">
+      <meta itemprop="name" content="Sass 的模組化管理 | 大姐的學習部落格">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          在本機安裝 Sass 編譯器
+          Sass 的模組化管理
         </h1>
 
         <div class="post-meta-container">
@@ -222,15 +217,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">發表於</span>
+      
 
-      <time title="創建時間：2022-06-07 17:08:14" itemprop="dateCreated datePublished" datetime="2022-06-07T17:08:14+08:00">2022-06-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新於</span>
-      <time title="修改時間：2022-06-09 14:41:43" itemprop="dateModified" datetime="2022-06-09T14:41:43+08:00">2022-06-09</time>
+      <time title="創建時間：2022-06-12 11:01:28 / 修改時間：13:04:16" itemprop="dateCreated datePublished" datetime="2022-06-12T11:01:28+08:00">2022-06-12</time>
     </span>
 
   
@@ -243,27 +232,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="如何在本機使用-Sass"><a href="#如何在本機使用-Sass" class="headerlink" title="如何在本機使用 Sass?"></a>如何在本機使用 Sass?</h1><p>  我個人使用的方式就是使用 VS code 的插件，live Sass compiler 的方式來進行編譯，我們可以在 VS code 的 Marketplace 裡面找到下面的插件<br>  <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass">Live Sass Compiler</a></p>
-  <img src="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%888.11.37.png?alt=media&token=925ebfda-490c-4682-a170-5ace3ea5cba0" style="width:100%">
-
+        <h1 id="為什麼需要模組化？"><a href="#為什麼需要模組化？" class="headerlink" title="為什麼需要模組化？"></a>為什麼需要模組化？</h1><p>  試想如果每一次開啟一個新專案都必須要重零開始那是多麼累人的一件事情？尤其人類的大腦並不適合記憶比較適合思考，當我們遇到程式設計中重複的技術問題時，如果要使用的時候都必須回想，工作流程上一直被打斷那效率自然就不好，這個時候如果我們把這些使用上重複率很高的程式碼獨立成各個不同的檔案，當這個技術有需要的時候再載入的話，就可以免去回憶的這個步驟，加快我們的工作效率，而這個行為就是模組化</p>
   <span id="more"></span>
 
-<p>  Live Sass Compiler 使用上也非常容易，安裝好之後我們可以在專案資料夾中新建一個 Sass 檔案，不論是 Sass 或是 SCSS 都可以，當專案資料夾裡面有 Sass 檔時系統就會自動偵測到接下來我們就會看到 VS code 的下方功能欄出現 Watch Sass 的字樣，按下去它就自動編譯了</p>
-<p>  <img src="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/sass%2F%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%888.43.14.png?alt=media&token=00fe9afe-304f-4fa3-92d3-205493f7e1d3" alt="img"></p>
-<p>  不過如果在沒有修改設定的情況下 Live Sass Compiler 會在 Sass 檔的同一層資料夾中自動生成 CSS 檔以及一個 css.map 的檔案，如果要指定資料夾的話可以依照下列步驟來設定</p>
-<ol>
-<li>進入 Live Sass Compiler 設定檔</li>
-</ol>
-  <img src="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/sass%2F%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%889.06.57.png?alt=media&token=30cdc6ef-c81a-438f-8e8f-36a489072d98" style="width:100%">
-  <img src="https://firebasestorage.googleapis.com/v0/b/bigsisblog-62bed.appspot.com/o/sass%2F%E6%88%AA%E5%9C%96%202022-06-07%20%E4%B8%8B%E5%8D%889.07.10.png?alt=media&token=85fb4277-243f-4fb9-857d-aa8c667622d9" style="width:100%">
+<h1 id="在-Sass-中的模組化"><a href="#在-Sass-中的模組化" class="headerlink" title="在 Sass 中的模組化"></a>在 Sass 中的模組化</h1><p>  而在 Sass 中我們可以利用 <code>@import</code> 的方法將檔案合併，首先我們要有一個將模組化好的檔案匯入的地方，通常會取名為 <code>all.scss</code> 或是 <code>main.scss</code> ， <code>@import</code> 這個方法就會用這這個檔案裡面，我們可以先看一下範例程式碼，看一下是怎麼使用的</p>
+  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;./vendor/bootstrap&#x27;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;./base/base&#x27;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;./layout/header&#x27;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;./layout/layout&#x27;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;./utili/helpers/helpers&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>並在 settings.json 檔中輸入以下程式碼</li>
-</ol>
-  <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;liveSassCompile.settings.formats&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">  <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;format&quot;</span><span class="punctuation">:</span> <span class="string">&quot;expanded&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;extensionName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.css&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;savePath&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/assets/style/css&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-<p>  最重要的就是 <code>&quot;savePath&quot;</code> 後面字串的位置，那是 CSS 檔的生成位置，如果像案例裡面有把 CSS 檔案巢狀的放在資料夾內的狀況，當你資料夾還沒有建立的時候它會幫你自動生成，十分方便。</p>
-<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p>  <a target="_blank" rel="noopener" href="https://courses.hexschool.com/courses/enrolled/670032">六角學院-Sass 實戰全攻略 - 成為前 1% 的 CSS 頂尖好手</a><br>  <a target="_blank" rel="noopener" href="https://awdr74100.github.io/2020-05-18-scss-install/">Roya Sass &#x2F; SCSS 預處理器 - 基本介紹與編譯環境建立</a>
- </p>
+<p>  我們可以使用相對路徑或是絕對路徑去指定模組化檔案的位置，Sass 會去尋找之後編譯，最會只會呈現一個  <code>all.css</code> 或是 <code>main.css</code> 檔案，我們只要在 html 檔去連結 CSS 檔就可以正確地顯示樣式</p>
+<h1 id="如何模組化檔案"><a href="#如何模組化檔案" class="headerlink" title="如何模組化檔案"></a>如何模組化檔案</h1><p>  在 Sass 裏面我們可以把想要模組化的檔案前面加上 <code>_</code> 這個符號，比如說像 CSS reset 的部分我們很常使用，所以把 reset 的程式碼模組化就會是個不錯的選擇，那我的習慣會將該程式碼放在一個 <code>reset.scss</code> 的檔案裡面，然後在前面加上 <code>_</code> 變成 <code>_reset.scss</code> Sass 就會把它看成一個模組單元，之後我們就可以在 <code>all.scss</code> 立面用 <code>@import</code> 匯入，資料節內結構如下。<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">|- scss</span><br><span class="line">    |</span><br><span class="line">    |- _resest.scss</span><br><span class="line">    |- main.scss</span><br></pre></td></tr></table></figure><br>  模組化是 Sass 一個非常重要的功能，之後各種不同的設計模式有了模組化的功能之後，不論是邏輯上，或是使用上都非常的易於使用及理解。</p>
+<h1 id="常見錯誤"><a href="#常見錯誤" class="headerlink" title="常見錯誤"></a>常見錯誤</h1><p>  因為我們把程式碼拆開了，所以無法一目瞭然的看到每行程式碼的順序，有時候搞混程式碼的順序，最常會遇到的就是變數在宣告之前使用，或是後面的程式碼權重無法壓過前面的權重，所以在規劃的時候要注意順序。</p>
+<p>  另外 <code>@import</code> 跟變數一樣後面要記得加上分號，如果沒有也會造成編譯錯誤。</p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p>  <a target="_blank" rel="noopener" href="https://courses.hexschool.com/courses/enrolled/670032">六角學院-Sass 實戰全攻略 - 成為前 1% 的 CSS 頂尖好手</a><br>  <a target="_blank" rel="noopener" href="https://awdr74100.github.io/2020-05-25-scss-variables/">Sass &#x2F; SCSS 預處理器 - Variables 變數宣告與 !global、!default 標誌定義</a></p>
 
     </div>
 
@@ -281,14 +260,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/06/03/Sass%E6%98%AF%E4%BB%80%E9%BA%BC%EF%BC%9F/" rel="prev" title="Sass 是什麼？">
-                  <i class="fa fa-chevron-left"></i> Sass 是什麼？
+                <a href="/2022/06/11/Sass%E8%AE%8A%E6%95%B8-List%EF%BC%8CMap/" rel="prev" title="Sass變數 - List、Map">
+                  <i class="fa fa-chevron-left"></i> Sass變數 - List、Map
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/06/09/Sass-%E8%AE%8A%E6%95%B8%E4%BD%BF%E7%94%A8/" rel="next" title="Sass 的變數">
-                  Sass 的變數 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>

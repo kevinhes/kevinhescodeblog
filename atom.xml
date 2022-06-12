@@ -6,7 +6,7 @@
   <link href="http://blog.kevinhes.art/atom.xml" rel="self"/>
   
   <link href="http://blog.kevinhes.art/"/>
-  <updated>2022-06-11T06:57:27.886Z</updated>
+  <updated>2022-06-12T05:04:16.704Z</updated>
   <id>http://blog.kevinhes.art/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Sass 的模組化管理</title>
+    <link href="http://blog.kevinhes.art/2022/06/12/Sass-%E7%9A%84%E6%A8%A1%E7%B5%84%E5%8C%96%E7%AE%A1%E7%90%86/"/>
+    <id>http://blog.kevinhes.art/2022/06/12/Sass-%E7%9A%84%E6%A8%A1%E7%B5%84%E5%8C%96%E7%AE%A1%E7%90%86/</id>
+    <published>2022-06-12T03:01:28.000Z</published>
+    <updated>2022-06-12T05:04:16.704Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="為什麼需要模組化？"><a href="#為什麼需要模組化？" class="headerlink" title="為什麼需要模組化？"></a>為什麼需要模組化？</h1><p>  試想如果每一次開啟一個新專案都必須要重零開始那是多麼累人的一件事情？尤其人類的大腦並不適合記憶比較適合思考，當我們遇到程式設計中重複的技術問題時，如果要使用的時候都必須回想，工作流程上一直被打斷那效率自然就不好，這個時候如果我們把這些使用上重複率很高的程式碼獨立成各個不同的檔案，當這個技術有需要的時候再載入的話，就可以免去回憶的這個步驟，加快我們的工作效率，而這個行為就是模組化</p>  <span id="more"></span><h1 id="在-Sass-中的模組化"><a href="#在-Sass-中的模組化" class="headerlink" title="在 Sass 中的模組化"></a>在 Sass 中的模組化</h1><p>  而在 Sass 中我們可以利用 <code>@import</code> 的方法將檔案合併，首先我們要有一個將模組化好的檔案匯入的地方，通常會取名為 <code>all.scss</code> 或是 <code>main.scss</code> ， <code>@import</code> 這個方法就會用這這個檔案裡面，我們可以先看一下範例程式碼，看一下是怎麼使用的</p>  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;./vendor/bootstrap&#x27;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;./base/base&#x27;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;./layout/header&#x27;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;./layout/layout&#x27;</span>;</span><br><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;./utili/helpers/helpers&#x27;</span></span><br></pre></td></tr></table></figure><p>  我們可以使用相對路徑或是絕對路徑去指定模組化檔案的位置，Sass 會去尋找之後編譯，最會只會呈現一個  <code>all.css</code> 或是 <code>main.css</code> 檔案，我們只要在 html 檔去連結 CSS 檔就可以正確地顯示樣式</p><h1 id="如何模組化檔案"><a href="#如何模組化檔案" class="headerlink" title="如何模組化檔案"></a>如何模組化檔案</h1><p>  在 Sass 裏面我們可以把想要模組化的檔案前面加上 <code>_</code> 這個符號，比如說像 CSS reset 的部分我們很常使用，所以把 reset 的程式碼模組化就會是個不錯的選擇，那我的習慣會將該程式碼放在一個 <code>reset.scss</code> 的檔案裡面，然後在前面加上 <code>_</code> 變成 <code>_reset.scss</code> Sass 就會把它看成一個模組單元，之後我們就可以在 <code>all.scss</code> 立面用 <code>@import</code> 匯入，資料節內結構如下。<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">|- scss</span><br><span class="line">    |</span><br><span class="line">    |- _resest.scss</span><br><span class="line">    |- main.scss</span><br></pre></td></tr></table></figure><br>  模組化是 Sass 一個非常重要的功能，之後各種不同的設計模式有了模組化的功能之後，不論是邏輯上，或是使用上都非常的易於使用及理解。</p><h1 id="常見錯誤"><a href="#常見錯誤" class="headerlink" title="常見錯誤"></a>常見錯誤</h1><p>  因為我們把程式碼拆開了，所以無法一目瞭然的看到每行程式碼的順序，有時候搞混程式碼的順序，最常會遇到的就是變數在宣告之前使用，或是後面的程式碼權重無法壓過前面的權重，所以在規劃的時候要注意順序。</p><p>  另外 <code>@import</code> 跟變數一樣後面要記得加上分號，如果沒有也會造成編譯錯誤。</p><h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p>  <a href="https://courses.hexschool.com/courses/enrolled/670032">六角學院-Sass 實戰全攻略 - 成為前 1% 的 CSS 頂尖好手</a><br>  <a href="https://awdr74100.github.io/2020-05-25-scss-variables/">Sass &#x2F; SCSS 預處理器 - Variables 變數宣告與 !global、!default 標誌定義</a></p>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;為什麼需要模組化？&quot;&gt;&lt;a href=&quot;#為什麼需要模組化？&quot; class=&quot;headerlink&quot; title=&quot;為什麼需要模組化？&quot;&gt;&lt;/a&gt;為什麼需要模組化？&lt;/h1&gt;&lt;p&gt;  試想如果每一次開啟一個新專案都必須要重零開始那是多麼累人的一件事情？尤其人類的大腦並不適合記憶比較適合思考，當我們遇到程式設計中重複的技術問題時，如果要使用的時候都必須回想，工作流程上一直被打斷那效率自然就不好，這個時候如果我們把這些使用上重複率很高的程式碼獨立成各個不同的檔案，當這個技術有需要的時候再載入的話，就可以免去回憶的這個步驟，加快我們的工作效率，而這個行為就是模組化&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Sass" scheme="http://blog.kevinhes.art/tags/Sass/"/>
+    
+    <category term="CSS" scheme="http://blog.kevinhes.art/tags/CSS/"/>
+    
+  </entry>
   
   <entry>
     <title>Sass變數 - List、Map</title>
