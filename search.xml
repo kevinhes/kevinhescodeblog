@@ -251,4 +251,34 @@
         <tag>CSS</tag>
       </tags>
   </entry>
+  <entry>
+    <title>直譯式語言 - JavaScript</title>
+    <url>/2022/06/23/%E7%9B%B4%E8%AD%AF%E5%BC%8F%E8%AA%9E%E8%A8%80-JavaScript/</url>
+    <content><![CDATA[<h1 id="直譯式語言與編譯式語言"><a href="#直譯式語言與編譯式語言" class="headerlink" title="直譯式語言與編譯式語言"></a>直譯式語言與編譯式語言</h1><p>  我們撰寫的程式碼在電腦運行的時候分成三個步驟</p>
+<ol>
+<li>撰寫原始碼</li>
+<li>生成代碼</li>
+<li>程式運行</li>
+</ol>
+<p>  而直譯式語言以及編譯式語言的差別會發生在步驟二的生成代碼上，我們可以簡單地理解成編譯式語言是一整包原始碼編譯後生成代碼，而直譯式語言則是逐行編譯後生成代碼</p>
+  <span id="more"></span>
+<h1 id="編譯式語言"><a href="#編譯式語言" class="headerlink" title="編譯式語言"></a>編譯式語言</h1><p>  編譯式語言在生成代碼的過程中，是將全部的原始碼交給編譯器編譯完成後執行，我們可以理解成這個樣子</p>
+<p>  原始碼檔案 &#x3D;&gt; 編譯器 &#x3D;&gt; 代碼檔案 &#x3D;&gt; 執行</p>
+<p>  由於電腦是直接執行代碼檔案，它無需再去判斷任何事情，所以編譯式的語言優點就是執行速度快、節省資源而且可以單獨執行。</p>
+<h1 id="直譯式語言"><a href="#直譯式語言" class="headerlink" title="直譯式語言"></a>直譯式語言</h1><p>  直譯式語言的編譯器方式則是逐行執行，也就是說編譯器會從上到下一次抓一行原始碼編譯後直接執行，基於這一點我們會把直譯式語言的編譯器稱作直譯器，那直譯的過程我們可以理解成這個樣子</p>
+<p>  一行原始碼 &#x3D;&gt; 直譯器 &#x3D;&gt; 一行代碼 &#x3D;&gt; 執行</p>
+<p>  那由於電腦是逐行執行代碼，當然執行速度較慢且消耗電腦資源，但由於是逐行編譯的關係如果某一行出了錯誤程式就會立刻停下報錯，這個特點就帶了了有效率的開發以及較有彈性的開發環境。<br>  另外直譯式語言也無法單獨執行，必須在有直譯器的環境下執行，就網頁前端工程師而言這個環境就是我們的瀏覽器，我們的原始碼是交由我們的瀏覽器去編譯的。</p>
+<h1 id="JavaScript-的編譯流程"><a href="#JavaScript-的編譯流程" class="headerlink" title="JavaScript 的編譯流程"></a>JavaScript 的編譯流程</h1><p>  如果以直譯式語言跟編譯式語言來區分的話，JavaScript 屬於直譯式語言，如果我們將我們的原始碼給瀏覽器編譯的話，他的流程會像是下面這個樣子</p>
+<p>  語法基本單元化 &#x3D;&gt; 抽象結構樹 &#x3D;&gt; 運行</p>
+<p>  接下來我們一個一個步驟來介紹</p>
+<h2 id="語法基本單元化"><a href="#語法基本單元化" class="headerlink" title="語法基本單元化"></a>語法基本單元化</h2><p>  我們以 <code>let a = 1;</code> 來示範，在進入語法基本單元化的時候我們的原始碼會被拆解成一個一個單詞也就是說 <code>let a = 1;</code> 就會變成 <code>let</code> 、 <code>a</code> 、 <code>=</code> 、 <code>1</code> 、 <code>;</code> 、 這五個小單元，此時直譯器還不曉得我們在寫什麼，他只會把這五個單詞歸類並紀錄值，像是 <code>let</code> 屬於 keyword <code>a</code> 則是屬於單字這樣的分類，然後再把這個分類傳給抽象結構樹來解析整句程式碼是什麼意思。</p>
+<h2 id="抽象結構樹"><a href="#抽象結構樹" class="headerlink" title="抽象結構樹"></a>抽象結構樹</h2><p>  進入結構樹之後，直譯器才會開始定義程式碼意義，他會先定義的程式碼的行為 <code>let a = 1;</code> 的話就是宣告變數，然後判斷是用什麼樣的方式宣告（let, var, const），之後再將變數名以及值給填入，帶生成完成後之後再運行。</p>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>  了解 JavaScript 是直譯式語言或許對於 coding 幫助不大，但了解直譯式語言幫助我體諒（？）為什麼程式碼每次都只報錯一條的原因，目前我還沒有接觸過編譯式語言，想必整包跑完一一除錯的心情一定是比差的吧？下一章我們就來理解一下 LHS 以及 RHS 吧！</p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p>  <a href="https://courses.hexschool.com/courses/javascript/lectures/11951908">六角學院-JavaScript 核心篇</a><br>  <a href="https://totoroliu.medium.com/%E7%B7%A8%E8%AD%AF%E8%AA%9E%E8%A8%80-vs-%E7%9B%B4%E8%AD%AF%E8%AA%9E%E8%A8%80-5f34e6bae051">編譯語言 VS 直譯語言</a></p>
+]]></content>
+      <tags>
+        <tag>Javascript 核心</tag>
+        <tag>Javascript</tag>
+      </tags>
+  </entry>
 </search>

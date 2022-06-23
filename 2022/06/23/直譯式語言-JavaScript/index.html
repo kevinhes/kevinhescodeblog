@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"blog.kevinhes.art","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.11.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜尋...","empty":"我們無法找到任何有關 ${query} 的搜索結果","hits_time":"${hits} 找到 ${time} 個結果","hits":"找到 ${hits} 個結果"}}</script><script src="/js/config.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3R6W50QX78"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3R6W50QX78');
+</script>
+
+    <meta name="description" content="直譯式語言與編譯式語言  我們撰寫的程式碼在電腦運行的時候分成三個步驟  撰寫原始碼 生成代碼 程式運行    而直譯式語言以及編譯式語言的差別會發生在步驟二的生成代碼上，我們可以簡單地理解成編譯式語言是一整包原始碼編譯後生成代碼，而直譯式語言則是逐行編譯後生成代碼">
+<meta property="og:type" content="article">
+<meta property="og:title" content="直譯式語言 - JavaScript">
+<meta property="og:url" content="http://blog.kevinhes.art/2022/06/23/%E7%9B%B4%E8%AD%AF%E5%BC%8F%E8%AA%9E%E8%A8%80-JavaScript/index.html">
+<meta property="og:site_name" content="大姐的學習部落格">
+<meta property="og:description" content="直譯式語言與編譯式語言  我們撰寫的程式碼在電腦運行的時候分成三個步驟  撰寫原始碼 生成代碼 程式運行    而直譯式語言以及編譯式語言的差別會發生在步驟二的生成代碼上，我們可以簡單地理解成編譯式語言是一整包原始碼編譯後生成代碼，而直譯式語言則是逐行編譯後生成代碼">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-06-23T11:11:32.000Z">
+<meta property="article:modified_time" content="2022-06-23T11:11:32.063Z">
+<meta property="article:author" content="kevinhes">
+<meta property="article:tag" content="Javascript 核心">
+<meta property="article:tag" content="Javascript">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://blog.kevinhes.art/2022/06/23/%E7%9B%B4%E8%AD%AF%E5%BC%8F%E8%AA%9E%E8%A8%80-JavaScript/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-TW","comments":true,"permalink":"http://blog.kevinhes.art/2022/06/23/%E7%9B%B4%E8%AD%AF%E5%BC%8F%E8%AA%9E%E8%A8%80-JavaScript/","path":"2022/06/23/直譯式語言-JavaScript/","title":"直譯式語言 - JavaScript"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>直譯式語言 - JavaScript | 大姐的學習部落格</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3R6W50QX78"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-3R6W50QX78","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="大姐的學習部落格" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">大姐的學習部落格</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">建築轉職前端的學習日常</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>關於</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B4%E8%AD%AF%E5%BC%8F%E8%AA%9E%E8%A8%80%E8%88%87%E7%B7%A8%E8%AD%AF%E5%BC%8F%E8%AA%9E%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">直譯式語言與編譯式語言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B7%A8%E8%AD%AF%E5%BC%8F%E8%AA%9E%E8%A8%80"><span class="nav-number">2.</span> <span class="nav-text">編譯式語言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%B4%E8%AD%AF%E5%BC%8F%E8%AA%9E%E8%A8%80"><span class="nav-number">3.</span> <span class="nav-text">直譯式語言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-%E7%9A%84%E7%B7%A8%E8%AD%AF%E6%B5%81%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">JavaScript 的編譯流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AA%9E%E6%B3%95%E5%9F%BA%E6%9C%AC%E5%96%AE%E5%85%83%E5%8C%96"><span class="nav-number">4.1.</span> <span class="nav-text">語法基本單元化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E7%B5%90%E6%A7%8B%E6%A8%B9"><span class="nav-number">4.2.</span> <span class="nav-text">抽象結構樹</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B5%90%E8%AA%9E"><span class="nav-number">5.</span> <span class="nav-text">結語</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E8%B3%87%E6%96%99"><span class="nav-number">6.</span> <span class="nav-text">參考資料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">kevinhes</p>
+  <div class="site-description" itemprop="description">前端學習筆記</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">標籤</span>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="回到頂端">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="http://blog.kevinhes.art/2022/06/23/%E7%9B%B4%E8%AD%AF%E5%BC%8F%E8%AA%9E%E8%A8%80-JavaScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="kevinhes">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="大姐的學習部落格">
+      <meta itemprop="description" content="前端學習筆記">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="直譯式語言 - JavaScript | 大姐的學習部落格">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          直譯式語言 - JavaScript
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">發表於</span>
+
+      <time title="創建時間：2022-06-23 19:11:32" itemprop="dateCreated datePublished" datetime="2022-06-23T19:11:32+08:00">2022-06-23</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="直譯式語言與編譯式語言"><a href="#直譯式語言與編譯式語言" class="headerlink" title="直譯式語言與編譯式語言"></a>直譯式語言與編譯式語言</h1><p>  我們撰寫的程式碼在電腦運行的時候分成三個步驟</p>
+<ol>
+<li>撰寫原始碼</li>
+<li>生成代碼</li>
+<li>程式運行</li>
+</ol>
+<p>  而直譯式語言以及編譯式語言的差別會發生在步驟二的生成代碼上，我們可以簡單地理解成編譯式語言是一整包原始碼編譯後生成代碼，而直譯式語言則是逐行編譯後生成代碼</p>
+  <span id="more"></span>
+<h1 id="編譯式語言"><a href="#編譯式語言" class="headerlink" title="編譯式語言"></a>編譯式語言</h1><p>  編譯式語言在生成代碼的過程中，是將全部的原始碼交給編譯器編譯完成後執行，我們可以理解成這個樣子</p>
+<p>  原始碼檔案 &#x3D;&gt; 編譯器 &#x3D;&gt; 代碼檔案 &#x3D;&gt; 執行</p>
+<p>  由於電腦是直接執行代碼檔案，它無需再去判斷任何事情，所以編譯式的語言優點就是執行速度快、節省資源而且可以單獨執行。</p>
+<h1 id="直譯式語言"><a href="#直譯式語言" class="headerlink" title="直譯式語言"></a>直譯式語言</h1><p>  直譯式語言的編譯器方式則是逐行執行，也就是說編譯器會從上到下一次抓一行原始碼編譯後直接執行，基於這一點我們會把直譯式語言的編譯器稱作直譯器，那直譯的過程我們可以理解成這個樣子</p>
+<p>  一行原始碼 &#x3D;&gt; 直譯器 &#x3D;&gt; 一行代碼 &#x3D;&gt; 執行</p>
+<p>  那由於電腦是逐行執行代碼，當然執行速度較慢且消耗電腦資源，但由於是逐行編譯的關係如果某一行出了錯誤程式就會立刻停下報錯，這個特點就帶了了有效率的開發以及較有彈性的開發環境。<br>  另外直譯式語言也無法單獨執行，必須在有直譯器的環境下執行，就網頁前端工程師而言這個環境就是我們的瀏覽器，我們的原始碼是交由我們的瀏覽器去編譯的。</p>
+<h1 id="JavaScript-的編譯流程"><a href="#JavaScript-的編譯流程" class="headerlink" title="JavaScript 的編譯流程"></a>JavaScript 的編譯流程</h1><p>  如果以直譯式語言跟編譯式語言來區分的話，JavaScript 屬於直譯式語言，如果我們將我們的原始碼給瀏覽器編譯的話，他的流程會像是下面這個樣子</p>
+<p>  語法基本單元化 &#x3D;&gt; 抽象結構樹 &#x3D;&gt; 運行</p>
+<p>  接下來我們一個一個步驟來介紹</p>
+<h2 id="語法基本單元化"><a href="#語法基本單元化" class="headerlink" title="語法基本單元化"></a>語法基本單元化</h2><p>  我們以 <code>let a = 1;</code> 來示範，在進入語法基本單元化的時候我們的原始碼會被拆解成一個一個單詞也就是說 <code>let a = 1;</code> 就會變成 <code>let</code> 、 <code>a</code> 、 <code>=</code> 、 <code>1</code> 、 <code>;</code> 、 這五個小單元，此時直譯器還不曉得我們在寫什麼，他只會把這五個單詞歸類並紀錄值，像是 <code>let</code> 屬於 keyword <code>a</code> 則是屬於單字這樣的分類，然後再把這個分類傳給抽象結構樹來解析整句程式碼是什麼意思。</p>
+<h2 id="抽象結構樹"><a href="#抽象結構樹" class="headerlink" title="抽象結構樹"></a>抽象結構樹</h2><p>  進入結構樹之後，直譯器才會開始定義程式碼意義，他會先定義的程式碼的行為 <code>let a = 1;</code> 的話就是宣告變數，然後判斷是用什麼樣的方式宣告（let, var, const），之後再將變數名以及值給填入，帶生成完成後之後再運行。</p>
+<h1 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h1><p>  了解 JavaScript 是直譯式語言或許對於 coding 幫助不大，但了解直譯式語言幫助我體諒（？）為什麼程式碼每次都只報錯一條的原因，目前我還沒有接觸過編譯式語言，想必整包跑完一一除錯的心情一定是比差的吧？下一章我們就來理解一下 LHS 以及 RHS 吧！</p>
+<h1 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h1><p>  <a target="_blank" rel="noopener" href="https://courses.hexschool.com/courses/javascript/lectures/11951908">六角學院-JavaScript 核心篇</a><br>  <a target="_blank" rel="noopener" href="https://totoroliu.medium.com/%E7%B7%A8%E8%AD%AF%E8%AA%9E%E8%A8%80-vs-%E7%9B%B4%E8%AD%AF%E8%AA%9E%E8%A8%80-5f34e6bae051">編譯語言 VS 直譯語言</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Javascript-%E6%A0%B8%E5%BF%83/" rel="tag"># Javascript 核心</a>
+              <a href="/tags/Javascript/" rel="tag"># Javascript</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/06/21/Mixin-Content-%E9%9F%BF%E6%87%89%E5%BC%8F%E7%B6%B2%E9%A0%81%E7%9A%84%E5%BF%85%E6%AE%BA%E6%8A%80/" rel="prev" title="Mixin + Content 響應式網頁的必殺技">
+                  <i class="fa fa-chevron-left"></i> Mixin + Content 響應式網頁的必殺技
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">若有需要轉載文章，麻煩請保留原作者名稱和原始連結</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 強力驅動
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
